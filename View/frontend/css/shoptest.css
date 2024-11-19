@@ -1,0 +1,155 @@
+/*
+* Template Name: UntreeStore
+* Template Author: Untree.co
+* Author URI: https://untree.co/
+* License: https://creativecommons.org/licenses/by/3.0/
+*/
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+@media (max-width: 768px) {
+  body {
+  font-size: 16px;
+  overflow-x: hidden;
+  position: relative;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  line-height: 28px;
+  color: #6b210a;
+  background-color: #9c7f52;
+}
+}
+a {
+  text-decoration: none;
+  transition: .3s all ease;
+  color: #2f2f2f;
+}
+
+a:hover {
+  color: #6b210a;
+  text-decoration: none;
+}
+
+.custom-navbar {
+  background: #230b05 !important;/*idk */
+  padding: 20px 0;
+}
+
+.custom-navbar .navbar-brand {
+  font-size: 32px;
+  font-weight: 600;
+}
+
+.custom-navbar .navbar-nav .nav-link {
+  font-weight: 500;
+  color: #230b05 !important; /*idk */
+  opacity: .5;
+  transition: .3s all ease;
+}
+
+.custom-navbar .navbar-nav .nav-link:hover {
+  opacity: 1;
+}
+
+.hero {
+  background: #230b05; /*idk */
+  padding: 4rem 0;
+}
+
+.hero h1 {
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #230b05;
+}
+
+.product-section {
+  padding: 7rem 0;
+}
+
+.product-section .product-item {
+  text-align: center;
+  display: block;
+  position: relative;
+  padding-bottom: 50px;
+  cursor: pointer;
+}
+
+.product-section .product-item .product-thumbnail {
+  margin-bottom: 30px;
+  transition: .3s all ease;
+}
+
+.product-section .product-item h3 {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.product-section .product-item strong {
+  font-weight: 800 !important;
+  font-size: 18px !important;
+}
+
+.product-section .product-item .icon-cross {
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  background: #2f2f2f;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  visibility: hidden;
+  transition: .3s all ease;
+}
+
+.product-section .product-item:hover .product-thumbnail {
+  transform: translateY(-25px);
+}
+
+.product-section .product-item:hover .icon-cross {
+  opacity: 1;
+  visibility: visible;
+}
+
+.footer-section {
+  padding: 80px 0;
+  background: #ffffff;
+}
+
+.footer-section .subscription-form {
+  margin-bottom: 40px;
+  position: relative;
+  z-index: 2;
+}
+
+.footer-section .subscription-form .form-control {
+  height: 50px;
+  border-radius: 10px;
+}
+
+.footer-section .footer-logo {
+  font-size: 32px;
+  font-weight: 500;
+  color: #3b5d50;
+}
+
+.footer-section .custom-social li {
+  display: inline-block;
+}
+
+.footer-section .custom-social li a {
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  background: #dce5e4;
+  color: #3b5d50;
+  border-radius: 50%;
+}
+
+.footer-section .custom-social li a:hover {
+  background: #3b5d50;
+  color: #ffffff;
+}
+
+.text-primary {
+  color: #3b5d50 !important;
+}
