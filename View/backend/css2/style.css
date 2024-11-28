@@ -1,0 +1,166 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styles */
+body {
+    background-color: #f9f9f9;
+    color: #333;
+    font-family: 'Arial', sans-serif;
+    font-size: 14px;  /* Slightly smaller font size */
+    line-height: 1.6;  /* Improved line spacing for readability */
+    padding: 20px;
+}
+
+/* Heading Styles */
+h1, h2 {
+    font-weight: bold;
+    color: #333;
+    line-height: 1.3;
+}
+
+/* Form Container */
+.form-container {
+    margin-bottom: 20px;
+}
+
+/* Form Styles */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background: #fff;
+    padding: 16px;  /* Added more padding */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 350px;  /* Slightly wider max width */
+    margin: 0 auto 20px;  /* Center align form and add bottom margin */
+    transition: all 0.3s ease-in-out;
+}
+
+form input, form textarea {
+    width: 100%;
+    padding: 12px;  /* Increased padding for inputs */
+    margin-bottom: 12px;  /* Increased space between inputs */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+}
+
+form input:focus, form textarea:focus {
+    border-color: #28a745;  /* Highlight input borders on focus */
+}
+
+form button {
+    padding: 10px 14px;  /* Slightly larger button */
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #218838;
+}
+
+/* Category List */
+.category-list {
+    display: flex;
+    flex-wrap: wrap;  /* Allow categories to wrap on smaller screens */
+    gap: 20px;  /* Slightly larger gap between items */
+    justify-content: center;
+    margin-top: 20px;
+}
+
+/* Category Item */
+.category-item {
+    background: #fff;
+    padding: 16px;  /* Increased padding */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 320px;  /* Adjust width for better alignment */
+    font-size: 14px;
+    margin-bottom: 20px;  /* Increased bottom margin */
+    transition: transform 0.3s ease-in-out;
+}
+
+.category-item:hover {
+    transform: translateY(-5px);  /* Slight lift effect on hover */
+}
+
+.category-item h2 {
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.category-item p {
+    margin-bottom: 12px;
+}
+
+/* Category Actions */
+.category-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.category-actions button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 10px 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.category-actions button:hover {
+    background-color: #0056b3;
+}
+
+/* Update Form */
+.update-form {
+    margin-top: 15px;
+    display: none;
+}
+
+/* Inline Form */
+.inline-form {
+    display: inline-block;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .form-container {
+        width: 90%;  /* Make form more responsive */
+    }
+
+    .category-item {
+        max-width: 100%;  /* Category items will take full width */
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        font-size: 12px;  /* Adjust font size on very small screens */
+        padding: 10px;
+    }
+
+    .category-list {
+        flex-direction: column;  /* Stack category items vertically */
+        align-items: center;
+    }
+}

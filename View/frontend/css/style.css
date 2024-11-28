@@ -9,6 +9,8 @@ body {
   overflow-x: hidden;
   position: relative; }
 
+
+
 body {
   font-family: "Inter", sans-serif;
   font-weight: 400;
@@ -29,6 +31,8 @@ a {
     text-decoration: none; }
   a.more {
     font-weight: 600; }
+
+    
 
 .custom-navbar {
   background: #230b05 !important;
@@ -97,6 +101,52 @@ a {
 .d-block {
   font-size: 20px;
 }
+.category-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: space-between;
+}
+
+.category-item {
+  background-color: #fafafa;
+  border: 1px solid #dcdcdc;
+  border-radius: 10px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  padding: 15px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.category-item:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+ul.category-list li.category-item h2 {
+  color: #2b2b2b;
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+ul.category-list li.category-item p {
+  color: #555;
+  font-size: 1.1rem;
+  line-height: 1.4;
+}
+
+.category-item:hover h2 {
+  color: #009688;
+}
+
+.category-item:hover p {
+  color: #333;
+}
+
+
+
 .hero {
   background: #6b210a;
   padding: calc(4rem - 30px) 0 0rem 0; }
@@ -117,6 +167,7 @@ a {
     letter-spacing: 2px;
     color: #ffffff;
     margin-bottom: 10px; }
+
   .hero h2{
     font-weight: 600;
     color: #ffffff;
