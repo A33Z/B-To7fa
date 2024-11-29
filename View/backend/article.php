@@ -76,11 +76,12 @@ $articles = $articleController->getAll();
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
     <link href="style.css" rel="stylesheet">
+    <script src="./js2/js.js"></script>
 </head>
 <body>
 <div class="container my-4">
     <h1 class="text-center mb-4">Manage Travel Articles</h1>
-    <form action="article.php" method="POST">
+    <form action="article.php" method="POST" onsubmit="return validateForm(event)">
         <div class="form-group">
             <label for="titre">Title:</label>
             <input type="text" id="titre" name="titre" class="form-control" required>
@@ -148,7 +149,7 @@ $articles = $articleController->getAll();
         document.getElementById('categorie').value = article.categorie;
         
         let form = document.querySelector('form[action="article.php"]');
-        form.innerHTML = `
+        form.innerHTML = ` 
             <div class="form-group">
                 <label for="titre">Title:</label>
                 <input type="text" id="titre" name="titre" class="form-control" required value="${article.titre}">
@@ -173,6 +174,7 @@ $articles = $articleController->getAll();
             <button type="submit" name="updateArticle" class="btn btn-warning btn-block">Update Article</button>
         `;
     }
+
 </script>
 </body>
 </html>
