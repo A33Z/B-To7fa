@@ -1,0 +1,69 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #230b05;
+  }
+  
+  .container {
+    display: flex;
+  }
+  
+  .admin-panel {
+    width: 20%;
+    background: #9c7f52;
+    color: #eee;
+    padding: 20px;
+  }
+  
+  .dashboard {
+    width: 60%;
+    padding: 20px;
+  }
+  
+  .back-office {
+    width: 20%;
+    background: #332b2c;
+    padding: 20px;
+  }
+  
+  .chart-container {
+    height: 300px;
+    background: #332b2c;
+    margin-bottom: 20px;
+  }
+  
+  .data-summary {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .summary-item {
+    background: #332b2c;
+    padding: 10px;
+    border-radius: 5px;
+    width: 48%;
+  }
+  
+  .progress-circle {
+    background: #6b210a;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    margin: 10px 0;
+  }
+  .admin-panel h2, .dashboard h1, .back-office h2 {
+    color: #333; /* Change to your desired color */
+  }
+  
+  .summary-item h3 {
+    color: #4caf50; /* Example for changing the summary item title color */
+  }
+  
+  .progress-circle span {
+    color: #fff; /* Change the percentage text color */
+  }

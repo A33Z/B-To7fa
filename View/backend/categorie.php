@@ -22,7 +22,7 @@ if (isset($_POST['delete'])) {
     if ($categorie->delete($category_id)) {
         echo "Category deleted successfully!";
     } else {
-        echo "Failed to delete category.";
+        echo "Failed to delete category."; 
     }
 }
 

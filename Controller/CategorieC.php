@@ -17,7 +17,7 @@ class Config {
                 die('Erreur: ' . $e->getMessage());
             }
         }
-        return self::$pdo;
+        return self::$pdo;  
     }
 }
 
