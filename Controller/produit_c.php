@@ -1,7 +1,7 @@
 <?php
 
 
-
+include_once 'C:\xampp\htdocs\New folder (3)\B-To7fa-main\pull\B-TO7FA\Controller\CategorieC.php';
 class Produit {
     private $conn;
 
@@ -16,13 +16,24 @@ class Produit {
         return $sql;
     }
 
-    public function ReferenceById($reference) {
-        $query = "SELECT * FROM Produit WHERE reference = :reference";
+    public function getByCategory($id_c) {
+        $query = "SELECT * FROM produit WHERE id_c = :id_c"; 
         $sql = $this->conn->prepare($query);
-        $sql->bindParam(':reference', $reference);
+        $sql->bindParam(':id_c', $id_c);
         $sql->execute();
-        return $sql->fetch(PDO::FETCH_ASSOC);
+        return $sql;
     }
+
+    public function searchByName($searchQuery, $limit = 10, $offset = 0)
+{
+    $sql = "SELECT * FROM produit WHERE libelle LIKE :searchQuery LIMIT :limit OFFSET :offset";
+    $stmt = $this->conn->prepare($sql);
+    $stmt->bindValue(':searchQuery', '%' . $searchQuery . '%', PDO::PARAM_STR);
+    $stmt->bindValue(':limit', (int)$limit, PDO::PARAM_INT);
+    $stmt->bindValue(':offset', (int)$offset, PDO::PARAM_INT);
+    $stmt->execute();
+    return $stmt;
+}
 
     public function create($reference, $libelle, $qte_stock, $date_c, $states, $id_c, $picture, $price) {
         $query = "INSERT INTO Produit (reference, libelle, qte_stock, date_c, states, id_c, picture, price) 

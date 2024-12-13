@@ -51,7 +51,7 @@ if (isset($_GET['delete'])) {
 
 if (isset($_GET['reference'])) {
     $reference = $_GET['reference'];
-    $productToUpdate = $produit->ReferenceById($reference);
+    $productToUpdate = $produit->getByCategory($reference);
     if ($productToUpdate) {
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_product'])) {
             $libelle = $_POST['libelle'] ?? '';
