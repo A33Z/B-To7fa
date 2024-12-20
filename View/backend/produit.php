@@ -71,7 +71,7 @@ if (isset($_GET['reference'])) {
 
         if ($produit->update($reference, $libelle, $qte_stock, $date_c, $states, $category, $picture, $price)) {
             $message = "Product successfully updated!";
-            header("Location: produit.php");
+            header("Location: current_page.php");
             exit;
         } else {
             $message = "Error updating the product.";

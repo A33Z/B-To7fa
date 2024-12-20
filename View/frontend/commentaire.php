@@ -57,7 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <!-- Start Header/Navigation -->
 <nav class="custom-navbar navbar navbar navbar-expand-md navbar-dark bg-dark" arial-label="OnlyTo7fa navigation bar">
     <div class="container">
-        <a class="navbar-brand" href="index.html">B-TO7FA<span>.</span></a>
+        <a class="navbar-brand" href="index.html">OnlyTo7fa<span>.</span></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsOnlyTo7fa" aria-controls="navbarsOnlyTo7fa" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -67,15 +67,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <a class="nav-link" href="index.html">Accueil</a>
                 </li>
                 <li><a class="nav-link" href="shop.php">Boutique</a></li>
-                <li><a class="nav-link" href="about.html">A propos de nous</a></li>
+                <li><a class="nav-link" href="about.html">À propos</a></li>
                 <li><a class="nav-link" href="services.html">Services</a></li>
                 <li><a class="nav-link" href="blog.php">Blog</a></li>
                 <li class="active"><a class="nav-link" href="commentaire.php">Contactez-nous</a></li>
             </ul>
             <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-                <li><a class="nav-link" href="profile.php"><img src="images/user.svg"></a></li>
+                <li><a class="nav-link" href="#"><img src="images/user.svg"></a></li>
                 <li><a class="nav-link" href="cart.html"><img src="images/cart.svg"></a></li>
-                <li><a class="nav-link" href="login.php">Déconnexion</a></li>
             </ul>
         </div>
     </div>

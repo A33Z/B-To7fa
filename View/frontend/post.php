@@ -1,197 +1,149 @@
 <?php
+
+
+
+include_once '../../Controller/article_ctrl.php'; // Inclure la classe ArticleController
 include_once '../../View/config.php';
-include_once '../../Controller/article_ctrl.php';
-include_once '../../Controller/commentaireC.php';
 
-$conn = Config::getConnexion();
-$commentCtrl = new CommentaireController($conn);
-$articleCtrl = new ArticleController($conn);
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id_a'])) {
-    $article_id = intval($_POST['id_a']);
-    $name = htmlspecialchars($_POST['name']);
-    $last_name = htmlspecialchars($_POST['last_name']);
-    $email = htmlspecialchars($_POST['email']);
-    $message = htmlspecialchars($_POST['message']);
-
-    $article = $articleCtrl->getArticleById($article_id);
-
-    if (!$article) {
-        die("Article introuvable !");
-    }
-
-    if ($commentCtrl->create($name, $last_name, $email, $message, $article_id)) {
-        header("Location: post.php?id=$article_id");
-        exit();
-    } else {
-        die("Erreur lors de l'ajout du commentaire !");
-    }
-}
-
+// Récupérer l'ID de l'article depuis le paramètre URL
 if (isset($_GET['id'])) {
-    $id = intval($_GET['id']);
-    $article = $articleCtrl->getArticleById($id);
-    if (!$article) {
-        die("Article introuvable !");
-    }
-} else {
-    die("Aucun article sélectionné !");
+    $id = $_GET['id'];
+
+    // Créer une connexion à la base de données en utilisant la classe Config
+    $conn = Config::getConnexion();
+
+    // Instancier la classe ArticleController
+    $articleCtrl = new ArticleController($conn);
+
+    // Récupérer les détails de l'article en fonction de l'ID
+    $query = "SELECT * FROM Article WHERE id = :id";
+    $sql = $conn->prepare($query);
+    $sql->bindParam(':id', $id);
+    $sql->execute();
+    $article = $sql->fetch();
 }
 ?>
 
 <!doctype html>
 <html lang="fr">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title><?php echo htmlspecialchars($article['titre']); ?> - B-TO7FA Blog</title>
+    <meta name="author" content="OnlyTo7fa">
+    <link rel="shortcut icon" href="favicon.png">
+    <meta name="description" content="" />
+    <meta name="keywords" content="bootstrap, bootstrap4" />
+
+    <!-- CSS de Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="css/tiny-slider.css" rel="stylesheet">
     <link href="css/style.css?v=1.1" rel="stylesheet">
+    <title><?php echo htmlspecialchars($article['titre']); ?> - OnlyTo7fa Blog</title>
+
 </head>
+
 <body>
- <!--header section-->
- 		<nav class="custom-navbar navbar navbar navbar-expand-md navbar-dark bg-dark" arial-label="Furni navigation bar">
 
-			<div class="container">
-				<a class="navbar-brand" href="index.html">B-TO7FA<span>.</span></a>
+<!-- Début de l'En-tête / Navigation -->
+<nav class="custom-navbar navbar navbar-expand-md navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">OnlyTo7fa<span>.</span></a>
 
-				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni" aria-controls="navbarsFurni" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsOnlyTo7fa">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-				<div class="collapse navbar-collapse" id="navbarsFurni">
-					<ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
-						<li class="nav-item ">
-							<a class="nav-link" href="index.html">Acceuill</a>
-						</li>
-						<li><a class="nav-link" href="shop.php">Boutique</a></li>
-						<li><a class="nav-link" href="about.html">A propos de nous</a></li>
-						<li><a class="nav-link" href="services.html">Services</a></li>
-						<li><a class="nav-link" href="blog.php">Blog</a></li>
-						<li><a class="nav-link" href="commentaire.php">Contacter-nous</a></li>
-					</ul>
-
-					<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-						<li><a class="nav-link" href="#"><img src="images/user.svg"></a></li>
-						<li><a class="nav-link" href="cart.html"><img src="images/cart.svg"></a></li>
-					</ul>
-				</div>
-			</div>
-		</nav>
-
-<div class="single-post container">
-    <center><h1><?php echo htmlspecialchars($article['titre']); ?></h1></center>
-    <center><img src="./images/<?php echo htmlspecialchars($article['picture']); ?>" alt="Image" class="img-fluid mb-4"></center>
-    <h6 class="post-meta">
-        <span><?php echo date('j F Y', strtotime($article['date_pub'])); ?></span> &bullet;
-    </h6>
-    <h3><p><?php echo nl2br(htmlspecialchars($article['contenu'], ENT_QUOTES, 'UTF-8')); ?></p></h3>
-</div>
-
-<div class="container comment-section">
-    <center><h3>Laisser un commentaire</h3></center>
-    <form action="post.php" method="POST">
-        <input type="hidden" name="id_a" value="<?php echo $article['id']; ?>">
-
-        <div class="mb-3">
-            <label for="name">Prénom</label>
-            <input type="text" name="name" class="form-control" required>
-        </div>
-
-        <div class="mb-3">
-            <label for="last_name">Nom</label>
-            <input type="text" name="last_name" class="form-control" required>
-        </div>
-
-        <div class="mb-3">
-            <label for="email">Email</label>
-            <input type="email" name="email" class="form-control" required>
-        </div>
-
-        <div class="mb-3">
-            <label for="message">Message</label>
-            <textarea name="message" class="form-control" rows="5" required></textarea>
-        </div>
-
-        <button type="submit" class="btn btn-primary">Envoyer</button>
-    </form>
-
-    <h3>Commentaires</h3>
-    <?php
-    $comments = $commentCtrl->getAll($article['id'])->fetchAll();
-
-    if (count($comments) > 0) {
-        foreach ($comments as $comment) {
-            echo "<div class='comment'>
-                    <h5>" . htmlspecialchars($comment['name']) . " " . htmlspecialchars($comment['last_name']) . "</h5>
-                    <p>" . nl2br(htmlspecialchars($comment['message'])) . "</p>
-                    <small>" . htmlspecialchars($comment['email']) . "</small>
-                  </div><hr>";
-        }
-    } else {
-        echo "<p>Aucun commentaire pour le moment. Soyez le premier !</p>";
-    }
-    ?>
-</div>
-
-<footer class="footer-section">
-    <div class="container relative">
-        <div class="row">
-            <div class="col-lg-8">
-                <div class="subscription-form">
-                    <h3 class="d-flex align-items-center"><span class="me-1"><img src="images/envelope-outline.svg" alt="Image" class="img-fluid"></span><span>S'inscrire Ici</span></h3>
-                    <form action="#" class="row g-3">
-                        <div class="col-auto">
-                            <input type="text" class="form-control" placeholder="entrez votre nom">
-                        </div>
-                        <div class="col-auto">
-                            <input type="email" class="form-control" placeholder="entrez votre email">
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-
-        <div class="row g-5 mb-5">
-            <div class="col-lg-4">
-                <div class="mb-4 footer-logo-wrap"><a href="#" class="footer-logo">To7fa<span>.</span></a></div>
-                <p class="mb-4">"Si vous avez d'autres questions ou souhaitez obtenir davantage d'informations, n'hésitez pas à nous contacter. Nous serons ravis de vous aider et de répondre à toutes vos demandes avec le plus grand respect."</p>
-
-                <ul class="list-unstyled custom-social">
-                    <li><a href="#"><span class="fa fa-brands fa-facebook-f"></span></a></li>
-                    <li><a href="#"><span class="fa fa-brands fa-twitter"></span></a></li>
-                    <li><a href="#"><span class="fa fa-brands fa-instagram"></span></a></li>
-                    <li><a href="#"><span class="fa fa-brands fa-linkedin"></span></a></li>
-                </ul>
-            </div>
-
-            <div class="col-6 col-sm-6 col-md-3">
-                <ul class="list-unstyled">
-                    <li><a href="#">à propos de nous </a></li>
-                    <li><a href="#">Services</a></li>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">contactez nous</a></li>
-                </ul>
-            </div>
-
-            <div class="col-6 col-sm-6 col-md-3">
-                <ul class="list-unstyled">
-                    <li><a href="#">boutique</a></li>
-                    <li><a href="#">acceuil</a></li>
-                </ul>
-            </div>
+        <div class="collapse navbar-collapse" id="navbarsOnlyTo7fa">
+            <ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
+                <li class="nav-item"><a class="nav-link" href="index.html">Accueil</a></li>
+                <li><a class="nav-link" href="shop.html">Boutique</a></li>
+                <li><a class="nav-link" href="about.html">À propos de nous</a></li>
+                <li><a class="nav-link" href="services.html">Services</a></li>
+                <li><a class="nav-link" href="blog.php">Blog</a></li>
+                <li><a class="nav-link" href="contact.html">Contactez-nous</a></li>
+            </ul>
         </div>
     </div>
+</nav>
+<!-- Fin de l'En-tête / Navigation -->
 
-    <div class="border-top copyright">
-        <div class="row pt-4">
-            <div class="col-lg-6">
-                <p class="mb-2 text-center text-lg-start">"Votre confiance est notre moteur, ensemble, faisons de chaque défi une réussite !"</p>
+<!-- Début de la Section Article -->
+<div class="single-post">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="post-entry">
+                    <!-- Titre de l'article -->
+                    <h1><?php echo htmlspecialchars($article['titre']); ?></h1>
+                    <!-- Image de l'article -->
+                    <img src="images/<?php echo htmlspecialchars($article['picture']); ?>" alt="Image" class="img-fluid mb-4">
+                    
+                    <!-- Contenu de l'article -->
+                    <h3 class="post-meta">
+                        <span>par <a href="#">Admin</a></span> &bullet;
+                        <span><?php echo date('j F Y', strtotime($article['date_pub'])); ?></span> &bullet;
+                        <span>Catégorie : <?php echo htmlspecialchars($article['categorie']); ?></span>
+                    </h3>
+                    <div class="post-content">
+                        <h3><?php echo nl2br(htmlspecialchars($article['contenu'])); ?></h3>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Début de la Section Sidebar -->
+            <div class="col-lg-4">
+                <div class="sidebar">
+                    <div class="sidebar-widget">
+                        <h3>À propos de OnlyTo7fa</h3>
+                        <p>Votre destination pour des meubles intemporels et des conceptions d'intérieur qui reflètent votre style unique.</p>
+                    </div>
+                    <div class="sidebar-widget">
+                        <h3>Suivez-nous</h3>
+                        <ul class="social-links">
+                            <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- Fin de la Section Sidebar -->
+        </div>
+    </div>
+</div>
+<!-- Fin de la Section Article -->
+
+<!-- Début de la Section Pied de page -->
+<footer class="site-footer bg-dark">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                <h3>À propos de OnlyTo7fa</h3>
+                <p>Votre destination pour des meubles intemporels et des conceptions d'intérieur qui reflètent votre style unique.</p>
+            </div>
+            <div class="col-lg-4">
+                <h3>Newsletter</h3>
+                <p>Inscrivez-vous à notre newsletter pour obtenir les dernières mises à jour et réductions !</p>
+            </div>
+            <div class="col-lg-4">
+                <h3>Suivez-nous</h3>
+                <ul class="social-links">
+                    <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                </ul>
             </div>
         </div>
     </div>
 </footer>
+<!-- Fin de la Section Pied de page -->
 
+<!-- Scripts JS -->
 <script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/tiny-slider.js"></script>
+<script src="js/script.js"></script>
 </body>
+
 </html>

@@ -3,15 +3,13 @@ include_once '../../Controller/produit_c.php';
 include_once '../../View/config.php';
 include_once '../../Controller/article_ctrl.php';
 include_once '../../Controller/userC.php';
-include_once '../../Controller/commentaireC.php';
 
 $db = Config::getConnexion();
 $produit = new Produit($db);
 $user = new UserController($db);
 $articleController = new ArticleController($db);
-$rec = new CommentaireController($db);
 
-$recla=$rec->getAll1();
+
 $users= $user->getAll();
 $products = $produit->getAll();
 $articles = $articleController->getAll();
@@ -78,9 +76,40 @@ $articles = $articleController->getAll();
                 Interface
             </div>
 
-            
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+                    aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Components</span>
+                </a>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Custom Components:</h6>
+                        <a class="collapse-item" href="buttons.html">Buttons</a>
+                        <a class="collapse-item" href="cards.html">Cards</a>
+                    </div>
+                </div>
+            </li>
 
-            
+            <!-- Nav Item - Utilities Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+                    aria-expanded="true" aria-controls="collapseUtilities">
+                    <i class="fas fa-fw fa-wrench"></i>
+                    <span>Utilities</span>
+                </a>
+                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Custom Utilities:</h6>
+                        <a class="collapse-item" href="utilities-color.html">Colors</a>
+                        <a class="collapse-item" href="utilities-border.html">Borders</a>
+                        <a class="collapse-item" href="utilities-animation.html">Animations</a>
+                        <a class="collapse-item" href="utilities-other.html">Other</a>
+                    </div>
+                </div>
+            </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider">
@@ -448,32 +477,6 @@ $articles = $articleController->getAll();
                                                 <th><?= htmlspecialchars($user['adresse']) ?></th>
                                                 <th><?= htmlspecialchars($user['date_nai']) ?></th>
                                                 <th><?= htmlspecialchars($user['role']) ?></th>
-                                            </tr>
-                                            <?php endwhile; ?>
-                                    </tbody>
-                                </table>
-                                <h2>Reclamations</h2>
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th>ID</th>
-                                            <th>Nom</th>
-                                            <th>Prenom</th>
-                                            <th>Email</th>
-                                            <th>Message</th>
-                                            <th>id de l'article</th>
-                                        </tr>
-                                    </thead>
-                                    
-                                    <tbody>
-                                        <?php while ($rec = $recla->fetch()): ?>
-                                            <tr>
-                                                <th><?= htmlspecialchars($rec['id_co']) ?></th>
-                                                <th><?= htmlspecialchars($rec['name']) ?></th>
-                                                <th><?= htmlspecialchars($rec['last_name']) ?></th>
-                                                <th><?= htmlspecialchars($rec['email']) ?></th>
-                                                <th><?= htmlspecialchars($rec['message']) ?></th>
-                                                <th><?= htmlspecialchars($rec['id_a']) ?></th>
                                             </tr>
                                             <?php endwhile; ?>
                                     </tbody>

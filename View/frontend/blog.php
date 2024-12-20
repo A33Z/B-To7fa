@@ -44,16 +44,11 @@ $articles = $articleCtrl->getAll()->fetchAll();
       <ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
         <li class="nav-item"><a class="nav-link" href="index.html">Accueil</a></li>
         <li><a class="nav-link" href="shop.php">Boutique</a></li>
-        <li><a class="nav-link" href="about.html">A propos de nous</a></li>
+        <li><a class="nav-link" href="about.html">À propos de nous</a></li>
         <li><a class="nav-link" href="services.html">Services</a></li>
         <li class="active"><a class="nav-link" href="blog.php">Blog</a></li>
         <li><a class="nav-link" href="commentaire.php">Contactez-nous</a></li>
       </ul>
-      <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-						<li><a class="nav-link" href="profile.php"><img src="images/user.svg"></a></li>
-						<li><a class="nav-link" href="cart.html"><img src="images/cart.svg"></a></li>
-						<li><a class="nav-link" href="login.php">Déconnexion</a></li>
-					</ul>
     </div>
   </div>
 </nav>
@@ -67,6 +62,11 @@ $articles = $articleCtrl->getAll()->fetchAll();
         <div class="intro-excerpt">
           <h1>Blog</h1>
           <p class="mb-4">Explorez nos derniers articles de blog et conseils en design d'intérieur.</p>
+        </div>
+      </div>
+      <div class="col-lg-7">
+        <div class="hero-img-wrap">
+          <img src="images/couch.png" class="img-fluid">
         </div>
       </div>
     </div>
@@ -102,84 +102,32 @@ $articles = $articleCtrl->getAll()->fetchAll();
 <!-- Fin de la Section Blog -->
 
 <!-- Début de la Section Pied de page -->
-<footer class="footer-section">
-			<div class="container relative">
-
-				<div class="row">
-					<div class="col-lg-8">
-						<div class="subscription-form">
-							<h3 class="d-flex align-items-center"><span class="me-1"><img src="images/envelope-outline.svg" alt="Image" class="img-fluid"></span><span>S'inscrire Ici</span></h3>
-
-							<form action="#" class="row g-3">
-								<div class="col-auto">
-									<input type="text" class="form-control" placeholder="entrez votre nom">
-								</div>
-								<div class="col-auto">
-									<input type="email" class="form-control" placeholder="entrez votre email">
-								</div>
-								<div class="col-auto">
-									<button class="btn btn-primary">
-										<span class="fa fa-paper-plane"></span>
-									</button>
-								</div>
-							</form>
-
-						</div>
-					</div>
-				</div>
-
-				<div class="row g-5 mb-5">
-					<div class="col-lg-4">
-						<div class="mb-4 footer-logo-wrap"><a href="#" class="footer-logo">To7fa<span>.</span></a></div>
-						<p class="mb-4">"Si vous avez d'autres questions ou souhaitez obtenir davantage d'informations, n'hésitez pas à nous contacter. Nous serons ravis de vous aider et de répondre à toutes vos demandes avec le plus grand respect."</p>
-
-						<ul class="list-unstyled custom-social">
-							<li><a href="#"><span class="fa fa-brands fa-facebook-f"></span></a></li>
-							<li><a href="#"><span class="fa fa-brands fa-twitter"></span></a></li>
-							<li><a href="#"><span class="fa fa-brands fa-instagram"></span></a></li>
-							<li><a href="#"><span class="fa fa-brands fa-linkedin"></span></a></li>
-						</ul>
-					</div>
-
-					
-
-							<div class="col-6 col-sm-6 col-md-3">
-								<ul class="list-unstyled">
-									<li><a href="#">à propos de nous </a></li>
-									<li><a href="#">Services</a></li>
-									<li><a href="#">Blog</a></li>
-									<li><a href="#">contactez nous</a></li>
-								</ul>
-							</div>
-
-							<div class="col-6 col-sm-6 col-md-3">
-								<ul class="list-unstyled">
-									
-									<li><a href="#">boutique</a></li>
-									<li><a href="#">acceuil</a></li>
-									
-								</ul>
-							</div>
-
-							
-						</div>
-					
-
-				</div>
-
-				<div class="border-top copyright">
-					<div class="row pt-4">
-						<div class="col-lg-6">
-							<p class="mb-2 text-center text-lg-start">"Votre confiance est notre moteur, ensemble, faisons de chaque défi une réussite !"</p>
-						</div>
-
-						
-
-					</div>
-				</div>
-
-			</div>
-		</footer>
+<footer class="site-footer bg-dark">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4">
+        <h3>À propos de B-TO7FA</h3>
+        <p>Votre destination pour des meubles intemporels et des designs d'intérieur qui parlent de votre style unique.</p>
+      </div>
+      <div class="col-lg-4">
+        <h3>Newsletter</h3>
+        <p>Inscrivez-vous à notre newsletter pour obtenir les dernières mises à jour et réductions !</p>
+        <form action="#" method="post">
+          <input type="email" class="form-control" placeholder="Votre email">
+          <button type="submit" class="btn btn-primary mt-2">S'abonner</button>
+        </form>
+      </div>
+      <div class="col-lg-4">
+        <h3>Suivez-nous</h3>
+        <ul class="social-links">
+          <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+          <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+          <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
 <!-- Fin de la Section Pied de page -->
 
 <!-- Scripts JS -->

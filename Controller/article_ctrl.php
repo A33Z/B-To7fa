@@ -16,14 +16,6 @@ class ArticleController
         return $sql;
     }
 
-    public function getArticleById($id) {
-        $query = "SELECT * FROM article WHERE id = :id";
-        $sql = $this->conn->prepare($query);
-        $sql->bindParam(':id', $id);
-        $sql->execute();
-        return $sql->fetch(PDO::FETCH_ASSOC);
-    }
-
     public function create($titre, $contenu, $categorie, $date_pub,$picture) {
         $query = "INSERT INTO Article (titre, contenu, categorie, date_pub,picture) VALUES (:titre, :contenu, :categorie, :date_pub,:picture)";
         $sql = $this->conn->prepare($query);
