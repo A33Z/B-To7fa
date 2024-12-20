@@ -1,5 +1,5 @@
 <?php
-include_once 'C:\xampp\htdocs\New folder (3)\B-To7fa-main\pull\B-TO7FA\Controller\commande_c.php';
+include_once '../../Controller/commande_c.php';
 
 class CommandeM {
     private $conn;

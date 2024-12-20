@@ -1,10 +1,12 @@
 <?php
+
 class Article {
     private $id;
     private $titre;
     private $contenu;
     private $categorie;
     private $datePub;
+    private $picture;
 
     public function __construct($id, $titre, $contenu, $categorie, $datePub) {
         $this->id = $id;
@@ -20,6 +22,14 @@ class Article {
 
     public function getTitre() {
         return $this->titre;
+    }
+
+    public function getPicture() {
+        return $this->picture;
+    }
+
+    public function setPicture($picture) {
+        $this->picture = $picture;
     }
 
     public function getContenu() {

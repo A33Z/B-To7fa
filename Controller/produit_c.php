@@ -1,7 +1,9 @@
 <?php
 
 
-include_once 'C:\xampp\htdocs\New folder (3)\B-To7fa-main\pull\B-TO7FA\Controller\CategorieC.php';
+include_once '../../Controller/CategorieC.php';
+
+
 class Produit {
     private $conn;
 
@@ -16,6 +18,15 @@ class Produit {
         return $sql;
     }
 
+    public function getByReference($reference) {
+        $sql = "SELECT * FROM produit WHERE reference = :reference";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':reference', $reference);
+        $stmt->execute();
+        
+        return $stmt->fetch(PDO::FETCH_ASSOC);  // This should return an associative array
+    }
+
     public function getByCategory($id_c) {
         $query = "SELECT * FROM produit WHERE id_c = :id_c"; 
         $sql = $this->conn->prepare($query);
@@ -23,6 +34,7 @@ class Produit {
         $sql->execute();
         return $sql;
     }
+    
 
     public function searchByName($searchQuery, $limit = 10, $offset = 0)
 {
@@ -72,6 +84,23 @@ class Produit {
         $sql->bindParam(':price', $price);
         $sql->bindParam(':reference', $reference); 
         return $sql->execute();
+    }
+    public function updateStock($productId, $newStock) {
+        $query = "UPDATE produit SET qte_stock = :qte_stock WHERE reference = :reference";
+        $stmt = $this->conn->prepare($query);
+
+        $stmt->bindParam(':qte_stock', $newStock);
+        $stmt->bindParam(':reference', $productId);
+
+        return $stmt->execute();
+    }
+
+    public function updateStatus($productId, $status) {
+        $query = "UPDATE produit SET states = :status WHERE reference = :productId";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':status', $status);
+        $stmt->bindParam(':productId', $productId);
+        $stmt->execute();
     }
 }
 ?>

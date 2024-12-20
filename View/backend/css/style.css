@@ -91,6 +91,8 @@ form {
     margin-top: 30px;
 }
 
+
+
 form label {
     display: block;
     margin-bottom: 8px;
@@ -108,6 +110,10 @@ form input[type="text"], form input[type="number"], form input[type="date"], for
 
 form input[type="file"] {
     font-size: 14px;
+}
+.small-btn {
+    padding: 2px 5px;
+    font-size: 12px;
 }
 
 form button {
@@ -133,3 +139,5 @@ form button:hover {
         padding: 15px;
     }
 }
+
+

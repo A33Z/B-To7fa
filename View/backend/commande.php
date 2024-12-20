@@ -1,9 +1,10 @@
 <?php
-include_once 'C:\xampp\htdocs\New folder (3)\B-To7fa-main\pull\B-TO7FA\Controller\commande_c.php';
-include_once 'C:\xampp\htdocs\New folder (3)\B-To7fa-main\pull\B-TO7FA\Model\commande_m.php';
-include_once 'C:\xampp\htdocs\New folder (3)\B-To7fa-main\pull\B-TO7FA\Controller\produit_c.php';
+include_once '../../Controller/commande_c.php';
+include_once '../../Model/commande_m.php';
+include_once '../../Controller/produit_c.php';
+include_once '../../View/config.php';
 
-$db = DatabaseConfig::getConnexion();
+$db = config::getConnexion();
 $produitController = new Produit($db);
 $commandeController = new CommandeM($db);
 $produits = $produitController->getAll();
