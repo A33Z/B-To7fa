@@ -197,15 +197,14 @@ if (isset($_POST['search'])) {
             <a class="nav-link" href="index.html">Accueil</a>
           </li>
           <li class="active"><a class="nav-link" href="shop.php">Boutique</a></li>
-          <li><a class="nav-link" href="about.html">A propos de nous</a></li>
+          <li><a class="nav-link" href="about.html">à propos de nous</a></li>
           <li><a class="nav-link" href="services.html">Services</a></li>
           <li><a class="nav-link" href="blog.php">Blog</a></li>
           <li><a class="nav-link" href="commentaire.php">Contactez-nous</a></li>
         </ul>
         <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-          <li><a class="nav-link" href="profile.php"><img src="images/user.svg"></a></li>
-          <li><a class="nav-link" href="cart.php"><img src="images/cart.svg"></a></li>
-          <li><a class="nav-link" href="login.php">Déconnexion</a></li>
+          <li><a class="nav-link" href="#"><img src="images/user.svg"></a></li>
+          <li><a class="nav-link" href="cart.html"><img src="images/cart.svg"></a></li>
         </ul>
       </div>
     </div>

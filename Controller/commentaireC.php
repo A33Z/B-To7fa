@@ -1,6 +1,6 @@
 <?php
 
-include_once '../../Controller/article_ctrl.php';
+include_once 'article_ctrl.php';
 
 class CommentaireController
 {
@@ -9,13 +9,6 @@ class CommentaireController
     // Constructor to initialize the connection
     public function __construct($db) {
         $this->conn = $db;
-    }
-
-    public function getAll1() {
-        $query = "SELECT * FROM commentaire"; 
-        $sql = $this->conn->prepare($query);
-        $sql->execute();
-        return $sql;
     }
 
     // Create comment
